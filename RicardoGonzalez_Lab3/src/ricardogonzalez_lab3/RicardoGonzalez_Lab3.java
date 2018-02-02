@@ -99,13 +99,46 @@ public class RicardoGonzalez_Lab3 {
         if(exe.equals("3")){
             AddCaso(User);
         }
+        if (exe.equals("4")) {
+            ModCaso(User);
+        }
     }
     
     public static void AddEvidencias(String Use, String Nombre){
         Evidencias.add(Nombre);
+        String Ev;
         do{
-        String Ev = JOptionPane.showInputDialog("Ingrese Evidencia, ingrese nada para salir.");
+        Ev = JOptionPane.showInputDialog("Ingrese Evidencia, ingrese nada para salir.");
+        if(!Ev.equals("")){
+            Evidencias.add(Ev);
+        }
         }while(!Ev.equals(""));
+    }
+    
+    public static void ModCaso(String Use) {
+        String Nombre, Lugar, Des, Tipo, Det, Estado;
+        do {
+            Nombre = JOptionPane.showInputDialog(null, "Nombre del Caso: ", "Agregar Caso", JOptionPane.QUESTION_MESSAGE);
+        } while (Nombre.equalsIgnoreCase(""));
+        Casos.add(Nombre);
+        do {
+            Lugar = JOptionPane.showInputDialog(null, "Lugar del Caso: ", "Agregar Caso", JOptionPane.QUESTION_MESSAGE);
+        } while (Lugar.equalsIgnoreCase(""));
+        Casos.add(Lugar);
+        do {
+            Des = JOptionPane.showInputDialog(null, "Descripcion del Caso: ", "Agregar Caso", JOptionPane.QUESTION_MESSAGE);
+        } while (Des.equalsIgnoreCase(""));
+        Casos.add(Des);
+        do {
+            Tipo = JOptionPane.showInputDialog(null, "Tipo de Caso: ", "Agregar Caso", JOptionPane.QUESTION_MESSAGE);
+        } while (!Tipo.equalsIgnoreCase("homicidio") || !Tipo.equalsIgnoreCase("robo") || !Tipo.equalsIgnoreCase("secuestro") || !Tipo.equalsIgnoreCase("violacion"));
+        Casos.add(Tipo);
+        Casos.add(Use);
+        do {
+            Estado = JOptionPane.showInputDialog(null, "Estado del Caso: ", "Agregar Caso", JOptionPane.QUESTION_MESSAGE);
+        } while (!Estado.equalsIgnoreCase("proceso") || !Tipo.equalsIgnoreCase("en proceso") || !Tipo.equalsIgnoreCase("resuelto") || !Tipo.equalsIgnoreCase("ya resuelto"));
+        Casos.add(Estado);
+        AddEvidencias(Use, Nombre);
     }
     
     public static void AddCaso(String Use) {
